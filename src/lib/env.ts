@@ -69,12 +69,13 @@ function parseEnv() {
   } as const;
 
   // Manual "schema" — add new env vars here as the platform grows
-  const DATABASE_URL = isNonEmptyString(raw.DATABASE_URL) ? raw.DATABASE_URL.trim() : undefined;
+  const isBuild = process.env.NEXT_PHASE === "phase-production-build";
+  const DATABASE_URL = isNonEmptyString(raw.DATABASE_URL) ? raw.DATABASE_URL.trim() : isBuild ? "postgresql://placeholder:placeholder@localhost:5432/placeholder_build" : undefined;
   if (!DATABASE_URL) {
     // In local/demo and during `tsc --noEmit` the pool is not instantiated,
     // so we warn rather than hard-crash the import graph. `src/db/index.ts`
     // still enforces a hard error when a connection is actually attempted.
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === "production" && !isBuild) {
       throw new Error("[env] DATABASE_URL is required in production");
     }
   }
