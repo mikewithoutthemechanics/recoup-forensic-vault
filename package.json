@@ -13,8 +13,8 @@
     "db:studio": "drizzle-kit studio"
   },
   "engines": {
-    "node": ">=22 <23",
-    "npm": ">=11"
+    "node": ">=22",
+    "npm": ">=10"
   },
   "dependencies": {
     "dotenv": "17.3.1",
