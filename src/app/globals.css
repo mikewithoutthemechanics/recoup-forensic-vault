@@ -1,60 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/* Recoup — "Forensic Vault"                                            */
-/* Design thesis: South African mining ledger meets glass vault.        */
-/* Mint = recovery signal, Brass = vault hardware, Abyss = deep mine.  */
-/* Differentiation: perforated ledger edges + brass rivets + mono      */
-/* invoice stamps + grain + glass depth — no generic SaaS gradient.    */
+/* Recoup — "Taste Atelier" — impeccable, editorial, warm paper       */
+/* Thesis: A South African atelier ledger — cream paper, terracotta  */
+/* ink, sage, brass hardware, deckled edges, generous whitespace.    */
+/* Completely opposite to Forensic Vault dark glass — light, tactile, */
+/* human, tasteful. No neon, no glass, no mint. Paper speaks.        */
 /* ------------------------------------------------------------------ */
 
 @theme {
-  /* surfaces */
-  --color-abyss: #060a12;
-  --color-panel: #0b1120;
-  --color-panel2: #0e1526;
-  --color-raise: #131c30;
-  --color-line: rgb(255 255 255 / 0.07);
-  --color-line2: rgb(255 255 255 / 0.12);
+  /* paper surfaces — warm, not stark white */
+  --color-abyss: #FFFBF0;
+  --color-panel: #FFFFFF;
+  --color-panel2: #FDF8F0;
+  --color-raise: #F5F0E8;
+  --color-line: rgb(26 26 30 / 0.08);
+  --color-line2: rgb(26 26 30 / 0.12);
 
-  /* ink */
-  --color-ink: #e9eff7;
-  --color-ink2: #9ba9bd;
-  --color-ink3: #63718a;
+  /* ink — soft black, not pure */
+  --color-ink: #1A1A1E;
+  --color-ink2: #5C5C5F;
+  --color-ink3: #9A9A9E;
 
-  /* brand accents */
-  --color-mint: #38d99c;
-  --color-mint2: #6fe7b6;
-  --color-mint-ink: #04160f;
-  --color-iris: #7cc9ff;
-  --color-brass: #f0b455;
-  --color-blush: #fb7185;
-  --color-lilac: #a79bff;
+  /* brand — terracotta is the new mint, sage is the new iris */
+  --color-mint: #C75B39;
+  --color-mint2: #D98A6B;
+  --color-mint-ink: #FFFBF0;
+  --color-iris: #8A9A8B;
+  --color-brass: #C9A86A;
+  --color-blush: #C75B39;
+  --color-lilac: #8A9A8B;
 
-  /* elevation */
-  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 16px 40px -28px rgb(0 0 0 / 0.9);
-  --shadow-pop: 0 24px 60px -24px rgb(0 0 0 / 0.85);
-  --shadow-glow: 0 0 0 1px rgb(255 255 255 / 0.05) inset, 0 12px 28px -14px rgb(56 217 156 / 0.55);
+  /* elevation — soft paper shadow, not glow */
+  --shadow-card: 0 1px 3px rgb(26 26 30 / 0.04), 0 8px 24px -16px rgb(26 26 30 / 0.08);
+  --shadow-pop: 0 12px 40px -16px rgb(26 26 30 / 0.12), 0 4px 12px -8px rgb(26 26 30 / 0.06);
+  --shadow-glow: 0 0 0 1px rgb(199 91 57 / 0.08) inset, 0 8px 24px -16px rgb(199 91 57 / 0.12);
 
-  --font-sans: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Instrument Serif", Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "Instrument Sans", "Inter", -apple-system, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
     scroll-behavior: smooth;
-    font-feature-settings: "cv11", "liga", "calt";
+    font-feature-settings: "ss01", "liga", "calt";
   }
 
   body {
     @apply bg-abyss font-sans text-ink antialiased;
     min-width: 320px;
+    background-image:
+      radial-gradient(60rem 40rem at 15% -10%, rgb(201 168 106 / 0.08), transparent),
+      radial-gradient(50rem 35rem at 95% 0%, rgb(199 91 57 / 0.05), transparent);
   }
 
   button,
@@ -66,19 +69,19 @@
   }
 
   :focus-visible {
-    outline: 2px solid rgb(56 217 156 / 0.85);
+    outline: 2px solid rgb(199 91 57 / 0.9);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
   ::selection {
-    background: rgb(56 217 156 / 0.3);
-    color: white;
+    background: rgb(199 91 57 / 0.18);
+    color: #1A1A1E;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgb(71 85 105 / 0.6) transparent;
+    scrollbar-color: rgb(180 180 180 / 0.5) transparent;
   }
 
   *::-webkit-scrollbar {
@@ -88,10 +91,10 @@
 
   *::-webkit-scrollbar-thumb {
     border-radius: 999px;
-    background: rgb(71 85 105 / 0.55);
+    background: rgb(180 180 180 / 0.45);
   }
 
-  *::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background: transparent;
   }
 
@@ -110,9 +113,8 @@
 }
 
 @layer components {
-  /* Buttons ----------------------------------------------------- */
   .btn {
-    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl border border-transparent px-3.5 py-2 text-sm font-medium transition-all duration-150;
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-full border border-transparent px-4 py-2 text-sm font-medium tracking-tight transition-all duration-150;
   }
   .btn:active {
     transform: translateY(0.5px) scale(0.995);
@@ -121,67 +123,84 @@
     @apply cursor-not-allowed opacity-55;
   }
   .btn-sm {
-    @apply rounded-lg px-3 py-1.5 text-xs;
+    @apply rounded-full px-3.5 py-1.5 text-xs;
   }
   .btn-primary {
-    @apply bg-mint font-semibold text-mint-ink shadow-glow hover:bg-mint2;
+    @apply bg-mint font-semibold text-mint-ink shadow-sm hover:bg-mint2;
   }
   .btn-quiet {
-    @apply border-line bg-panel2 text-ink2 hover:border-line2 hover:bg-raise hover:text-ink;
+    @apply border-line bg-white text-ink2 hover:border-line2 hover:bg-raise hover:text-ink;
   }
   .btn-ghost {
-    @apply text-ink3 hover:bg-panel2 hover:text-ink;
+    @apply text-ink3 hover:bg-raise hover:text-ink;
   }
   .btn-warn {
-    @apply border-brass/40 bg-brass/10 text-brass hover:bg-brass/15;
+    @apply border-brass/30 bg-brass/10 text-brass hover:bg-brass/15;
   }
   .btn-danger {
-    @apply border-blush/40 bg-blush/10 text-blush hover:bg-blush/15;
+    @apply border-blush/20 bg-blush/10 text-blush hover:bg-blush/15;
   }
 
-  /* Inputs ------------------------------------------------------ */
   .input {
-    @apply rounded-xl border border-line bg-panel2 px-3 py-1.5 text-xs text-ink outline-none transition placeholder:text-ink3 focus:border-mint/40 focus:ring-2 focus:ring-mint/15;
+    @apply rounded-full border border-line bg-white px-4 py-2 text-sm text-ink outline-none transition placeholder:text-ink3 focus:border-mint/40 focus:ring-2 focus:ring-mint/10;
   }
 
-  /* Segmented control -------------------------------------------- */
   .seg {
-    @apply inline-flex items-center gap-0.5 rounded-xl border border-line bg-panel/80 p-1;
+    @apply inline-flex items-center gap-1 rounded-full border border-line bg-white p-1;
   }
   .seg-item {
-    @apply rounded-lg px-2.5 py-1 text-xs font-medium text-ink3 transition hover:text-ink;
+    @apply rounded-full px-3 py-1 text-xs font-medium text-ink3 transition hover:text-ink;
   }
   .seg-item[data-active="true"] {
-    @apply bg-raise text-ink shadow-[inset_0_1px_0_rgb(255_255_255/0.06)];
+    @apply bg-ink text-abyss;
   }
 
-  /* Icon chip ----------------------------------------------------- */
   .icon-chip {
-    @apply inline-flex h-7 w-7 items-center justify-center rounded-lg text-sm ring-1;
+    @apply inline-flex h-7 w-7 items-center justify-center rounded-full text-sm ring-1;
   }
 
-  /* Keyboard cap -------------------------------------------------- */
   .keycap {
-    @apply rounded border border-line bg-black/30 px-1.5 py-0.5 font-sans text-[9px] font-semibold text-ink3;
+    @apply rounded border border-line bg-raise px-1.5 py-0.5 font-mono text-[9px] font-semibold text-ink3;
   }
 
-  /* Interactive surface ------------------------------------------- */
   .lift {
-    @apply transition-all duration-150 hover:-translate-y-px hover:border-line2 hover:bg-panel2;
+    @apply transition-all duration-150 hover:-translate-y-0.5 hover:border-line2 hover:shadow-card;
   }
 
-  /* Forensic Vault — perforated ledger edge ------------------------- */
+  /* Taste Atelier — paper deckled + stamp */
   .perforated {
-    background-image: radial-gradient(circle, rgb(255 255 255 / 0.14) 1.2px, transparent 1.5px);
-    background-size: 10px 10px;
-    background-repeat: repeat-x;
-    background-position: top center;
+    display: none;
   }
   .vault-rivet {
-    @apply absolute h-1.5 w-1.5 rounded-full bg-brass/70 shadow-[0_0_0_1px_rgb(255_255_255/0.1),0_1px_3px_rgb(0_0_0/0.4)];
+    display: none;
+  }
+  .deckled {
+    position: relative;
+  }
+  .deckled::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -6px;
+    height: 6px;
+    background: radial-gradient(ellipse at center, rgb(26 26 30 / 0.04) 1px, transparent 1.5px);
+    background-size: 8px 6px;
+    opacity: 0.5;
+  }
+  .stamp {
+    @apply inline-flex items-center gap-1 rounded-full border border-mint/20 bg-mint/10 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-mint;
+  }
+  .paper-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
   }
   .font-display {
     font-family: var(--font-display);
+    font-optical-sizing: auto;
   }
   .font-mono {
     font-family: var(--font-mono);
@@ -191,8 +210,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
-    mix-blend-mode: soft-light;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
   }
 }
