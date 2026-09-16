@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ------------------------------------------------------------------ */
+/* Recoup — "Forensic Vault"                                            */
+/* Design thesis: South African mining ledger meets glass vault.        */
+/* Mint = recovery signal, Brass = vault hardware, Abyss = deep mine.  */
+/* Differentiation: perforated ledger edges + brass rivets + mono      */
+/* invoice stamps + grain + glass depth — no generic SaaS gradient.    */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  /* surfaces */
+  --color-abyss: #060a12;
+  --color-panel: #0b1120;
+  --color-panel2: #0e1526;
+  --color-raise: #131c30;
+  --color-line: rgb(255 255 255 / 0.07);
+  --color-line2: rgb(255 255 255 / 0.12);
+
+  /* ink */
+  --color-ink: #e9eff7;
+  --color-ink2: #9ba9bd;
+  --color-ink3: #63718a;
+
+  /* brand accents */
+  --color-mint: #38d99c;
+  --color-mint2: #6fe7b6;
+  --color-mint-ink: #04160f;
+  --color-iris: #7cc9ff;
+  --color-brass: #f0b455;
+  --color-blush: #fb7185;
+  --color-lilac: #a79bff;
+
+  /* elevation */
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 16px 40px -28px rgb(0 0 0 / 0.9);
+  --shadow-pop: 0 24px 60px -24px rgb(0 0 0 / 0.85);
+  --shadow-glow: 0 0 0 1px rgb(255 255 255 / 0.05) inset, 0 12px 28px -14px rgb(56 217 156 / 0.55);
+
+  --font-sans: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv11", "liga", "calt";
+  }
+
+  body {
+    @apply bg-abyss font-sans text-ink antialiased;
+    min-width: 320px;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(56 217 156 / 0.85);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgb(56 217 156 / 0.3);
+    color: white;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(71 85 105 / 0.6) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgb(71 85 105 / 0.55);
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Buttons ----------------------------------------------------- */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl border border-transparent px-3.5 py-2 text-sm font-medium transition-all duration-150;
+  }
+  .btn:active {
+    transform: translateY(0.5px) scale(0.995);
+  }
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-55;
+  }
+  .btn-sm {
+    @apply rounded-lg px-3 py-1.5 text-xs;
+  }
+  .btn-primary {
+    @apply bg-mint font-semibold text-mint-ink shadow-glow hover:bg-mint2;
+  }
+  .btn-quiet {
+    @apply border-line bg-panel2 text-ink2 hover:border-line2 hover:bg-raise hover:text-ink;
+  }
+  .btn-ghost {
+    @apply text-ink3 hover:bg-panel2 hover:text-ink;
+  }
+  .btn-warn {
+    @apply border-brass/40 bg-brass/10 text-brass hover:bg-brass/15;
+  }
+  .btn-danger {
+    @apply border-blush/40 bg-blush/10 text-blush hover:bg-blush/15;
+  }
+
+  /* Inputs ------------------------------------------------------ */
+  .input {
+    @apply rounded-xl border border-line bg-panel2 px-3 py-1.5 text-xs text-ink outline-none transition placeholder:text-ink3 focus:border-mint/40 focus:ring-2 focus:ring-mint/15;
+  }
+
+  /* Segmented control -------------------------------------------- */
+  .seg {
+    @apply inline-flex items-center gap-0.5 rounded-xl border border-line bg-panel/80 p-1;
+  }
+  .seg-item {
+    @apply rounded-lg px-2.5 py-1 text-xs font-medium text-ink3 transition hover:text-ink;
+  }
+  .seg-item[data-active="true"] {
+    @apply bg-raise text-ink shadow-[inset_0_1px_0_rgb(255_255_255/0.06)];
+  }
+
+  /* Icon chip ----------------------------------------------------- */
+  .icon-chip {
+    @apply inline-flex h-7 w-7 items-center justify-center rounded-lg text-sm ring-1;
+  }
+
+  /* Keyboard cap -------------------------------------------------- */
+  .keycap {
+    @apply rounded border border-line bg-black/30 px-1.5 py-0.5 font-sans text-[9px] font-semibold text-ink3;
+  }
+
+  /* Interactive surface ------------------------------------------- */
+  .lift {
+    @apply transition-all duration-150 hover:-translate-y-px hover:border-line2 hover:bg-panel2;
+  }
+
+  /* Forensic Vault — perforated ledger edge ------------------------- */
+  .perforated {
+    background-image: radial-gradient(circle, rgb(255 255 255 / 0.14) 1.2px, transparent 1.5px);
+    background-size: 10px 10px;
+    background-repeat: repeat-x;
+    background-position: top center;
+  }
+  .vault-rivet {
+    @apply absolute h-1.5 w-1.5 rounded-full bg-brass/70 shadow-[0_0_0_1px_rgb(255_255_255/0.1),0_1px_3px_rgb(0_0_0/0.4)];
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+  }
+}

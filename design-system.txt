@@ -1,0 +1,49 @@
++-----------------------------------------------------------------------------------------+
+|  TARGET: Recoup - RECOMMENDED DESIGN SYSTEM                                             |
++-----------------------------------------------------------------------------------------+
+|                                                                                          |
+|  PATTERN: Conversion-Optimized                                                          |
+|     CTA: Above fold                                                                     |
+|     Sections:                                                                           |
+|       1. Hero                                                                           |
+|       2. Features                                                                       |
+|       3. CTA                                                                            |
+|                                                                                          |
+|  STYLE: Glassmorphism                                                                   |
+|     Keywords: Frosted glass, transparent, blurred background, layered, vibrant          |
+|     background, light source, depth, multi-layer                                        |
+|     Best For: Modern SaaS, financial dashboards, high-end corporate, lifestyle apps,    |
+|     modal overlays, navigation                                                          |
+|     Performance: ΓÜá Good | Accessibility: ΓÜá Ensure 4.5:1                                 |
+|                                                                                          |
+|  COLORS:                                                                                |
+|     Primary:    #F59E0B                                                                 |
+|     Secondary:  #FBBF24                                                                 |
+|     CTA:        #8B5CF6                                                                 |
+|     Background: #0F172A                                                                 |
+|     Text:       #F8FAFC                                                                 |
+|     Notes: Dark tech colors + trust + vibrant accents                                   |
+|                                                                                          |
+|  TYPOGRAPHY: Fira Code / Fira Sans                                                      |
+|     Mood: dashboard, data, analytics, code, technical, precise                          |
+|     Best For: Dashboards, analytics, data visualization, admin panels                   |
+|     Google Fonts: https://fonts.google.com/share?selection.family=Fira+Code:wght@400;500;600;700|Fira+Sans:wght@300;400;500;600;700|
+|     CSS Import: @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@4...|
+|                                                                                          |
+|  KEY EFFECTS:                                                                           |
+|     Backdrop blur (10-20px), subtle border (1px solid rgba white 0.2), light            |
+|     reflection, Z-depth                                                                 |
+|                                                                                          |
+|  AVOID (Anti-patterns):                                                                 |
+|     Light backgrounds + No security indicators                                          |
+|                                                                                          |
+|  PRE-DELIVERY CHECKLIST:                                                                |
+|     [ ] No emojis as icons (use SVG: Heroicons/Lucide)                                  |
+|     [ ] cursor-pointer on all clickable elements                                        |
+|     [ ] Hover states with smooth transitions (150-300ms)                                |
+|     [ ] Light mode: text contrast 4.5:1 minimum                                         |
+|     [ ] Focus states visible for keyboard nav                                           |
+|     [ ] prefers-reduced-motion respected                                                |
+|     [ ] Responsive: 375px, 768px, 1024px, 1440px                                        |
+|                                                                                          |
++-----------------------------------------------------------------------------------------+
