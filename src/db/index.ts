@@ -1,21 +1,13 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
-// Build-safe: Vercel runs `next build` without env at collect time. Use a placeholder
-// so the build succeeds; runtime will fail gracefully in page.tsx with the
-// Forensic Vault onboarding. In production with DATABASE_URL set, this is a no-op.
+// Vercel builds without env — use placeholder so build succeeds; runtime with
+// missing env will show the Forensic Vault onboarding (page.tsx catches query failure).
 const rawDatabaseUrl = process.env.DATABASE_URL;
-const isBuild = process.env.NEXT_PHASE === "phase-production-build";
-const databaseUrl = rawDatabaseUrl ?? (isBuild ? "postgresql://placeholder:placeholder@localhost:5432/placeholder_build" : undefined);
+const databaseUrl = rawDatabaseUrl ?? "postgresql://placeholder:placeholder@localhost:5432/placeholder_build";
 
-if (!databaseUrl) {
-  throw new Error(
-    "[db] DATABASE_URL is required — copy .env.example to .env and set DATABASE_URL=postgresql://user:password@host:5432/app_db",
-  );
-}
-
-if (!rawDatabaseUrl && !isBuild) {
-  console.warn("[db] DATABASE_URL missing — runtime will show vault onboarding until env is set");
+if (!rawDatabaseUrl) {
+  console.warn("[db] DATABASE_URL missing — using placeholder; add DATABASE_URL in Vercel env to enable ledger (see .env.example)");
 }
 
 const globalForDb = globalThis as typeof globalThis & {
